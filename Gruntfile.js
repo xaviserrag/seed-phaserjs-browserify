@@ -4,11 +4,22 @@ module.exports = function(grunt) {
         browserify: {
             dist: {
                 files: {
-                    'build/app.js': ['src/scripts/*.js']
+                    'build/src/app.js': ['src/scripts/*.js']
                 }
+            }
+        },
+        copy: {
+            all: {
+                // This copies all the html and css into the dist/ folder
+                expand: true,
+                src: ['src/*.html', 'src/*.css'],
+                dest: 'build/'
             }
         }
     });
 
     grunt.loadNpmTasks('grunt-browserify');
+    grunt.loadNpmTasks('grunt-contrib-copy');
+
+    grunt.registerTask('default', ['browserify', 'copy']);
 };
