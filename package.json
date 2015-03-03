@@ -1,11 +1,13 @@
 {
   "name": "seed-hot-loading",
   "version": "1.0.0",
-  "description": "Boilerplate of a project running with grunt and browserify",
   "main": "index.js",
   "scripts": {
     "test": "test"
   },
   "author": "Xavi Serra",
-  "license": "ISC"
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-browserify": "^3.5.0"
+  }
 }
