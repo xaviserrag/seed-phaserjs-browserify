@@ -3,29 +3,29 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         'clean': ["build"],
-        'partition': {
-            dist: {
-                //files: {
-                //    'build/src/app.js': ['src/scripts/a.js', 'src/scripts/b.js']
-                //}
-            },
-            options: {
-                postBundleCB: function (b) {
-                    b.plugin('partition-bundle', [
-                        {
-                            map: {
-                                "app.js": [
-                                    "src/scripts/a",
-                                    "src/scripts/b"
-                                ],
-                                "late.js": ["src/scripts/c", "src/scripts/d"]
-                            },
-                            output: 'build/src'
-                        }
-                    ]);
-                }
-            }
-        },
+        //'browserify': {
+        //    dist: {
+        //        //files: {
+        //        //    'build/src/app.js': ['src/scripts/a.js', 'src/scripts/b.js']
+        //        //}
+        //        options: {
+        //            plugin: [
+        //                'partition-bundle',[
+        //                    {
+        //                        map: {
+        //                            "app.js": [
+        //                                "src/scripts/a",
+        //                                "src/scripts/b"
+        //                            ],
+        //                            "late.js": ["src/scripts/c", "src/scripts/d"]
+        //                        },
+        //                        output: 'build/src/'
+        //                    }
+        //                ]
+        //            ]
+        //        }
+        //    }
+        //},
         'copy': {
             all: {
                 // This copies all the html and css into the dist/ folder
@@ -49,5 +49,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-http-server');
 
-    grunt.registerTask('default', ['clean', 'browserify', 'copy', 'http-server']);
+    grunt.registerTask('build', ['clean', 'copy']);
+    grunt.registerTask('server', ['http-server']);
 };

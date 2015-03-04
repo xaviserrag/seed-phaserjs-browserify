@@ -5,8 +5,7 @@
   "scripts": {
     "test": "test",
     "browserify" : "browserify -p [ partition-bundle --map mapping.json --output build/src ]",
-    "grunt": "grunt copy",
-    "build" : "grunt copy && npm run browserify"
+    "build" : "grunt build && npm run browserify && grunt server"
   },
   "author": "Xavi Serra",
   "devDependencies": {
