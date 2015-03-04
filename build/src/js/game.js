@@ -246,26 +246,90 @@ loadjs.map = {};
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"../lib/append":1,"../lib/fold":2,"../lib/indexOf":3,"../lib/loadScript":4,"../lib/parallel":5}]},{},[6]);
-loadjs.d("./src/scripts/a",function(require,module,exports){
-var b = require('./b');
+loadjs.d("3",function(require,module,exports){
+'use strict';
 
-var a = function () {
-    console.log('b should be 5 -> ', b);
-    var button = document.getElementById('lazyLoad');
-    button.addEventListener('click', function() {
-        loadjs(['./late'], function(late) {
-            console.log(late());
-        });
-    });
+function Preload() {
+    this.ready = false;
+}
+
+Preload.prototype = {
+    preload: function() {
+        this.load.onLoadComplete.addOnce(this.onLoadComplete, this);
+        this.load.image('logo', 'assets/logo.png');
+
+    },
+    create: function() {
+    },
+    update: function() {
+        if(!!this.ready) {
+            this.game.state.start('play');
+        }
+    },
+    onLoadComplete: function() {
+        this.ready = true;
+    }
 };
 
-module.exports = a;
+module.exports = Preload;
 
-},{"./b":"./src/scripts/b"});
-
-loadjs.files = ["app.js","late.js"]
-loadjs.map = {"./src/scripts/b":[],"./src/scripts/c":[1],"./src/scripts/d":[1],"./src/scripts/a":[]};loadjs.d("./src/scripts/b",function(require,module,exports){
-var b = 5;
-
-module.exports = b;
 },{});
+
+loadjs.files = ["game.js","settings.js"]
+loadjs.map = {"1":[],"2":[],"3":[],"./src/game/extra/settings":[1],"./src/game/main":[]};loadjs.d("2",function(require,module,exports){
+'use strict';
+
+function Play() {}
+
+Play.prototype = {
+    preload: function() {
+    },
+    create: function() {
+        var logo = this.game.add.sprite(this.game.width/2, this.game.height/2, 'logo');
+        logo.inputEnabled = true;
+        logo.events.onInputDown.add(function(){console.log("sup")});
+        logo.anchor.x = .5;
+        logo.anchor.y = .5;
+    },
+    update: function() {
+    },
+    onLoadComplete: function() {
+    }
+};
+
+module.exports = Play;
+
+},{});
+loadjs.d("1",function(require,module,exports){
+'use strict';
+
+function Boot() {
+}
+
+Boot.prototype = {
+    preload: function() {
+    },
+    create: function() {
+        this.game.state.start('preload');
+    }
+};
+
+module.exports = Boot;
+
+},{});
+loadjs.d("./src/game/main",function(require,module,exports){
+var initGame = function () {
+    var game = new Phaser.Game(800, 600, Phaser.AUTO, 'test-hot-loading');
+    // Game States
+    game.state.add('boot', require('./states/boot'));
+    game.state.add('play', require('./states/play'));
+    game.state.add('preload', require('./states/preload'));
+
+    game.state.start('boot');
+};
+
+module.exports = initGame;
+
+
+
+},{"./states/boot":1,"./states/play":2,"./states/preload":3});

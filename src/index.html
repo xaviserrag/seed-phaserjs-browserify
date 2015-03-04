@@ -6,14 +6,13 @@
 
 </head>
 <body>
-<button id="lazyLoad">Press me</button>
 </body>
-<script src="app.js"></script>
+<script src="js/phaser.js"></script>
+<script src="js/game.js"></script>
 <script>
-    document.getElementById('lazyLoad').addEventListener('click', function() {
-        loadjs(['./src/scripts/c'], function(late) {
-            late();
-        });
+    loadjs(['./src/game/main'], function(main) {
+        main && main();
     });
+
 </script>
 </html>

@@ -27,11 +27,19 @@ module.exports = function(grunt) {
         //    }
         //},
         'copy': {
-            all: {
-                // This copies all the html and css into the dist/ folder
-                expand: true,
-                src: ['src/*.html', 'src/*.css'],
-                dest: 'build/'
+            dist: {
+                files: [
+                    { expand: true, src: ['src/assets/**'], dest: 'build/' },
+                    { expand: true, flatten: true, src: ['node_modules/phaser/build/*.js'], dest: 'build/src/js/' },
+                    { expand: true, src: ['src/css/**'], dest: 'build/' },
+                    { expand: true, src: ['src/index.html'], dest: 'build/' }
+                ]
+            }
+        },
+        'browserify': {
+            build: {
+                src: ['src/game/main.js'],
+                dest: 'build/src/js/game.js'
             }
         },
         'http-server': {

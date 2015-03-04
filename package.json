@@ -4,8 +4,8 @@
   "main": "index.js",
   "scripts": {
     "test": "test",
-    "browserify" : "browserify -p [ partition-bundle --map mapping.json --output build/src ]",
-    "build" : "grunt build && npm run browserify && grunt server"
+    "browserify": "browserify -p [ partition-bundle --map mapping.json --output build/src/js ]",
+    "build": "grunt build && npm run browserify && grunt server"
   },
   "author": "Xavi Serra",
   "devDependencies": {
@@ -14,6 +14,7 @@
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-copy": "^0.8.0",
     "grunt-http-server": "^1.2.0",
-    "partition-bundle": "^1.0.14"
+    "partition-bundle": "^1.0.14",
+    "phaser": "^2.2.2"
   }
 }
