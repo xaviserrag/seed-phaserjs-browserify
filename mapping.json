@@ -1,0 +1,7 @@
+{
+  "app.js": [
+    "src/scripts/a",
+    "src/scripts/b"
+  ],
+  "late.js": ["src/scripts/c", "src/scripts/d"]
+}

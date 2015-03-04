@@ -263,8 +263,8 @@ module.exports = a;
 
 },{"./b":"./src/scripts/b"});
 
-loadjs.files = ["app.js","late.js"]
-loadjs.map = {"./src/scripts/b":[],"./src/scripts/d":[1],"./src/scripts/c":[1],"./src/scripts/a":[]};loadjs.d("./src/scripts/b",function(require,module,exports){
+loadjs.files = []
+loadjs.map = {"./src/scripts/b":[],"./src/scripts/a":[]};loadjs.d("./src/scripts/b",function(require,module,exports){
 var b = 5;
 
 module.exports = b;
