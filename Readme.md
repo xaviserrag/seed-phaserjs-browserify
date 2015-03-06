@@ -36,7 +36,7 @@ loading on demand things that are not used on the start of the game.
 First of all, you need to create a module like settings.js, just extend some Phaser component, like a sprite, or group.
 Then load the images that the elements needs on that script with `Phaser.Loader` (you can see how i do it on the example).
 
-The next step is to prepare the mapping.json to separate the files correctly.
+The next step is to prepare the `mapping.json` to separate the files correctly.
 
 Example:
 ```javascript
@@ -50,17 +50,23 @@ The first statement `ab.js` or `settings.js` are the output files and the others
 will be prepared to be downloaded on demand. The first one will be the one loaded on the `<script>` tag.
 
 ```javascript
-<script src="js/ab.js"></script>
+    <script src="js/ab.js"></script>
 ```
 
 Then if you want to load the settings.js. (In the example is loaded on the play.js). Simply use the loadjs function:
 
 ```javascript
-            loadjs(['./src/game/extra/settings'], function(settings) {
-                self.settings = new settings(self.game);
-            });
+    loadjs(['./src/game/extra/settings'], function(settings) {
+        self.settings = new settings(self.game);
+    });
 ```
 
 The url that you  pass to the loadjs is the original  url, not the build url  (this is how the plugin works internally).
+As you can see on the example, on the callback I  just create a new `Settings` object.
+
+
+###Contributors
+
+[Tomás Casquero](https://github.com/tomcask)
 
 
