@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "test",
-    "browserify": "browserify -p [ partition-bundle --map mapping.json --output build/src/js ]",
+    "browserify": "browserify -p [ partition-bundle --map mapping.json --output build/src ]",
     "build": "grunt build && npm run browserify && grunt server"
   },
   "author": "Xavi Serra",

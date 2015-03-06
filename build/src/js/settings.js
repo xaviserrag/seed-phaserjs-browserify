@@ -2,15 +2,23 @@ loadjs.d("./src/game/extra/settings",function(require,module,exports){
 'use strict';
 
 function Settings(game) {
-    Phaser.Sprite.call(this, game, game.width/2, game.height/2 - 50, 'bombo');
+    var loader = new Phaser.Loader(game);
+    var self = this;
+
+    var onLoaded = function onLoaded () {
+        Phaser.Sprite.call(self, game, game.width/2, game.height/2, 'settings');
+        game.add.existing(self);
+        self.anchor.x = 0.5;
+        self.anchor.y = 0.5;
+    };
+
+    loader.image('settings', 'assets/settings.png');
+    loader.onLoadComplete.addOnce(onLoaded);
+    loader.start();
 }
 
 Settings.prototype = Object.create(Phaser.Sprite.prototype);
 Settings.prototype.constructor = Settings;
-
-Settings.prototype.preload = function preload () {
-    this.load.image('logo', 'assets/power-bombo.png');
-};
 
 module.exports = Settings;
 

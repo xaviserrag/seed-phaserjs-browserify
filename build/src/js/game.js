@@ -275,8 +275,8 @@ module.exports = Preload;
 
 },{});
 
-loadjs.files = ["game.js","settings.js"]
-loadjs.map = {"1":[],"2":[],"3":[],"./src/game/extra/settings":[1],"./src/game/main":[]};loadjs.d("2",function(require,module,exports){
+loadjs.files = ["js/game.js","js/settings.js"]
+loadjs.map = {"1":[],"2":[],"3":[],"./src/game/extra/settings":[1],"./src/game/main":[]};loadjs.d("1",function(require,module,exports){
 'use strict';
 
 function Play() {}
@@ -287,9 +287,15 @@ Play.prototype = {
     create: function() {
         var logo = this.game.add.sprite(this.game.width/2, this.game.height/2, 'logo');
         logo.inputEnabled = true;
-        logo.events.onInputDown.add(function(){console.log("sup")});
         logo.anchor.x = .5;
         logo.anchor.y = .5;
+        var self = this;
+        logo.events.onInputDown.add(function(){
+            loadjs(['./src/game/extra/settings'], function(settings) {
+                self.settings = new settings(self.game);
+            });
+        });
+
     },
     update: function() {
     },
@@ -300,7 +306,7 @@ Play.prototype = {
 module.exports = Play;
 
 },{});
-loadjs.d("1",function(require,module,exports){
+loadjs.d("2",function(require,module,exports){
 'use strict';
 
 function Boot() {
@@ -332,4 +338,4 @@ module.exports = initGame;
 
 
 
-},{"./states/boot":1,"./states/play":2,"./states/preload":3});
+},{"./states/boot":2,"./states/play":1,"./states/preload":3});
