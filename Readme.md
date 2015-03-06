@@ -17,7 +17,8 @@ Once you have the project cloned, just run npm install on the project folder.
 
 ```javascript
 cd seed-phaserjs-browserify
-npm install
+npm install browserify -g
+npm install 
 ```
 
 Now you have the project prepared! It's time to test it :)
