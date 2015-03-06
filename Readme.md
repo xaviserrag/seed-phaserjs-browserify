@@ -47,7 +47,7 @@ Example:
 ```
 
 The first statement `ab.js` or `settings.js` are the output files and the others are the input files. Every file on the output
-will be prepared to be downloaded on demand. The first one will be the one loaded on the `<script>´ tag.
+will be prepared to be downloaded on demand. The first one will be the one loaded on the `<script>` tag.
 
 ```javascript
 <script src="js/ab.js"></script>
