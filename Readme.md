@@ -61,4 +61,6 @@ Then if you want to load the settings.js. (In the example is loaded on the play.
             });
 ```
 
-The url that you  pass to the loadjs is the url before the 
+The url that you  pass to the loadjs is the original  url, not the build url  (this is how the plugin works internally).
+
+
