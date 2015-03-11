@@ -1,4 +1,4 @@
-var partitionBundle = require('partition-bundle');
+var mapping = require('./src/game/mapping');
 
 module.exports = function(grunt) {
     grunt.initConfig({
@@ -35,10 +35,7 @@ module.exports = function(grunt) {
             options: {
                 plugin: [
                     ['partition-bundle', {
-                        map: {
-                            "js/game.js": ["src/game/main.js"],
-                            "js/settings.js": ["src/game/extra/settings.js"]
-                        },
+                        map: mapping,
                         output: 'build/src'
                     }]
                 ]
