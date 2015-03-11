@@ -10,22 +10,21 @@ when you click on the phaser logo (simulating a settings button).
 First of all clone the project on your machine.
 
 ```javascript
-$ git clone https://github.com/xaviserrag/seed-phaserjs-browserify.git
+git clone https://github.com/xaviserrag/seed-phaserjs-browserify.git
 ```
 
 Once you have the project cloned, just run npm install on the project folder.
 
 ```javascript
-$ cd seed-phaserjs-browserify
-$ npm install browserify -g
-$ npm install 
+cd seed-phaserjs-browserify
+npm install browserify -g
+npm install 
 ```
 
 Now you have the project prepared! It's time to test it :)
 
 ```javascript
-$ grunt build
-$ grunt server
+npm run build
 ```
 
 Go to `localhost:8282` and press the logo! If you open the developer tools on the networking tab, you'll see how the

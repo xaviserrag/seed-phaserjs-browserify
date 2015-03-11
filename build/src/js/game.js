@@ -276,7 +276,7 @@ module.exports = Preload;
 },{});
 
 loadjs.files = ["js/game.js","js/settings.js"]
-loadjs.map = {"1":[],"2":[],"3":[],"./src/game/extra/settings":[1],"./src/game/main":[]};loadjs.d("1",function(require,module,exports){
+loadjs.map = {"1":[],"2":[],"3":[],"./src/game/extra/settings":[1],"./src/game/main":[]};loadjs.d("2",function(require,module,exports){
 'use strict';
 
 function Play() {}
@@ -306,7 +306,7 @@ Play.prototype = {
 module.exports = Play;
 
 },{});
-loadjs.d("2",function(require,module,exports){
+loadjs.d("1",function(require,module,exports){
 'use strict';
 
 function Boot() {
@@ -338,4 +338,4 @@ module.exports = initGame;
 
 
 
-},{"./states/boot":2,"./states/play":1,"./states/preload":3});
+},{"./states/boot":1,"./states/play":2,"./states/preload":3});
